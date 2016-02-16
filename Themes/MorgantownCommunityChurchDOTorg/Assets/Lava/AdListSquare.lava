@@ -1,0 +1,15 @@
+<div class="col-md-12 no-gutters">
+  {% for item in Items limit:1 -%}
+<div class="col-md-6 row no-gutters">
+      <a href="{{ LinkedPages.DetailPage }}?Item={{ item.Id }}">
+       <img class="img-responsive" {{ item.Image | remove:'<img' }}</a>
+    </div>
+  {% endfor -%}
+
+  {% for item in Items limit:4 offset:1-%}
+<div class="col-md-3 row no-gutters">
+      <a href="{{ LinkedPages.DetailPage }}?Item={{ item.Id }}">
+       <img class="img-responsive" {{ item.Image | remove:'<img' }}</a>
+    </div>
+  {% endfor -%}
+</div>
