@@ -29,7 +29,7 @@
 						</div>
                         <div>
 								<h2 class="announcement-title">{{ item.Title }}</h2>
-								<p "><strong>Title:</strong> {{ item.JobTitle }}</p>	
+								<p><strong>Title:</strong> {{ item.JobTitle }}</p>	
 						<i class="fa-envelope-alt"> </i> <p ><strong>E-mail:</strong> {{ item.E-mailAddress }}</p>
 						</div>
 							<p>{{ item.Content | Truncate:200,'...' }}</p>
