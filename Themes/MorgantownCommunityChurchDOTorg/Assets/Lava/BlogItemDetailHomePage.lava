@@ -1,0 +1,53 @@
+{% for item in Items %}
+<style>
+    .text-center {
+        text-align: center;
+        }
+    .section-head {
+            background-color: #5a9628;
+			background-position: center;
+			background-size: cover;
+			color: #fff;
+			Padding: 20px 20px;
+			}
+
+</style>
+
+<Div class="section-head row no-gutters">
+    <div>
+        <H1 class="text-center" style="font-size:65px"> <strong>{{ item.Title }}</strong></h1>
+    </div>
+</div>
+
+<br>
+     </div>
+     <div class="col-md-12">
+     {% if item.Video != empty %}
+        <div class="embed-responsive embed-responsive-16by9">
+            {{ item.Video }}
+        </div>
+    {% endif %}
+    </div>
+    <div class="col-md-3">
+        <div> 
+            <img class="img-responsive" {{ item.Image | remove:'<img' }}</a>
+
+        </div>
+    </div>
+    <div class="col-md-9">
+            {% if item.Time != empty %}
+            <h3><strong>Date:</strong> {{ item.Time || Date:'dddd, MMMM d, yyyy' }}</h3>
+            <h3><strong>Time:</strong> {{ item.Time || Date:'h:mm tt' }}</h3>
+            {% endif %}
+            
+            {% if item.Location != empty %}
+            <h3><strong>Location:</strong> {{ item.Location }}</h3>
+            {% endif %}
+ 
+    {{ item.Content }}
+    </div>
+
+    
+{% endfor %}
+
+

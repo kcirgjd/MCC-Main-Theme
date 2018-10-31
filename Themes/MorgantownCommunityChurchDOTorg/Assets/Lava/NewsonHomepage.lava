@@ -1,0 +1,83 @@
+       <style>
+			.parallax-ad { 
+    /* The image used */
+				    background-image: url("/Themes/MorgantownCommunityChurchDOTorg/Assets/images/wood_texture.jpg");
+
+   			 /* Set a specific height */
+			    height: 100%; 
+	
+		    /* Create the parallax scrolling effect */
+			    background-attachment: fixed;
+			    background-position: center;
+			    background-repeat: no-repeat;
+			    background-size: cover;
+				Padding: 1%;
+}
+			.extra-padding {
+				padding: 10px;
+				margin:0px, 5px 10px, 5px;
+				box-shadow: 1px 1px 10px #888888;
+				min-height:500px				}
+			.extra-padding:hover {
+				background-color: #f5f5f5;
+				padding: 10px;
+				box-shadow: 1px 1px 12px #888888;
+
+			}
+
+			
+		</style>
+
+<div class="parallax-ad row no-gutter">
+{% for item in Items %}
+<article class="col-md-3">
+  <div class="panel">
+   <div class="extra-padding ">
+     <div>
+         
+          <div>
+            {% if item.Image == empty %}
+              <div class="embed-responsive embed-responsive-4by3">
+                  {{ item.Video }}
+              </div>
+          {% endif %}
+          </div> 
+        <div> 
+<div>
+  
+             <a href="{{ LinkedPages.DetailPage }}?Item={{ item.Id }}" ><img class="img-thumbnail" {{ item.Image | remove:'<img' }}
+        </div>
+     </div>
+      <h4>{{ item.Title }}</h4></a>
+             {% if item.Time != empty %}
+            <h5>Event Date: {{ item.Time || Date:'M/d/yyyy h:mm tt' }}</h5>
+             {% endif %}
+    <div>
+{% if item.Time contains '0' %}
+{{ item.SummaryText | Truncate:60,'...' }}
+{% else %}
+{{ item.SummaryText | Truncate:115,'...' }}
+{% endif %}      
+    </div>
+
+  <p class="margin-t-lg">
+    <a href="{{ LinkedPages.DetailPage }}?Item={{ item.Id }}" class="btn btn-default btn-xs">
+      Read more <i class="fa fa-chevron-right"></i>
+    </a>
+  </p>
+    <div>
+
+    </div>
+  </div>
+</article>
+{% endfor %}
+</div>
+<script>$( document ).ready(function() {
+    var heights = $(".col-md-3").map(function() {
+        return $(this).height();
+    }).get(),
+
+    maxHeight = Math.max.apply(null, heights);
+
+    $(".col-md-3").height(maxHeight);
+});</script>

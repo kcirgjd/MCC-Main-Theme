@@ -1,0 +1,88 @@
+{% assign firstArticle = CurrentPage | Times:ResultsPerPage %}
+<div>
+	
+	{% if item != null and item.size > 0 %}
+	
+		{% if ResultsPerPage == 0 %}
+			{% assign ResultsPerPage = item.size %}
+		{% endif %}
+		
+		{% assign base0PageCount = 0 %}
+		
+		{% if ResultsPerPage > 0 and ResultsPerPage < item.size %}
+			{% assign base0PageCount = item.size | DividedBy:ResultsPerPage %}
+			
+			{% assign remainder = item.size | Modulo:ResultsPerPage %}
+			{% if remainder == 0 %}
+				{% assign base0PageCount = base0PageCount | Minus:1 %}
+			{% endif %}
+		{% endif %}
+		
+		{% if firstArticle >= item.size %}
+			{% assign CurrentPage = base0PageCount %}
+			{% assign firstArticle = base0PageCount | Times:ResultsPerPage %}
+		{% endif %}
+<div class="col-md-12">	
+		{% for article in item limit:ResultsPerPage offset:firstArticle -%}
+			<div class="col-md-4">
+			<div class="well">
+				<div>
+<center><img src="{{article.itunes_image.href}} " alt="Sermon" style="height:200px;"> </center>
+					<h4>{{article.title | Truncate:32,'...' }} </h4>
+					<P><strong>Date:</strong> {{article.pubDate | Date:'dddd, MMMM d, yyyy' }}</p>
+
+<P><strong>Speaker:</strong> {{article.itunes_author | Truncate:30,'...' }}</p>
+
+
+<P><strong>Summary:</strong> {{article.itunes_summary | | Truncate:30,'...' }}</p>
+					<audio controls>
+ 						 <source src="{{article.guid.value}}" type="audio/mpeg">
+						</audio><br>
+					<a class="btn btn-default" href="{{article.link}}"> More...</a> <br>
+														
+				</div>
+			</div>
+			</div>
+			
+		{% endfor -%}
+<div>
+		
+		{% if base0PageCount > 0 %}
+			<ul class="pagination pagination-sm">
+				{% if CurrentPage == 0 %}
+					<li class="prev disabled"> 
+						<a class="aspNetDisabled" href="{{BaseUrl}}">«</a>
+					</li> 
+				{% else %}
+					<li class="prev">
+						<a href="{{BaseUrl}}?articlePage={{CurrentPage | Minus:1}}">«</a>
+					</li>
+				{% endif %}
+				
+				{% for i in (0..base0PageCount) %}
+					{% if i == CurrentPage %}
+						<li class="active">
+					{% else %}
+						<li>
+					{% endif %}
+						<a href="{{BaseUrl}}?articlePage={{i}}" class="active">{{i | Plus:1}}</a>
+					</li>
+				{% endfor %}
+				
+				
+				{% if  base0PageCount == CurrentPage %}
+					<li class="next disabled">
+						<a href="{{BaseUrl}}?articlePage={{CurrentPage}}" class="aspNetDisabled">»</a>
+					</li>
+				{% else %}
+					<li class="next">
+						<a href="{{BaseUrl}}?articlePage={{CurrentPage | Plus:1}}">»</a>
+					</li>
+				{% endif %}
+			</ul>
+		{% endif %}
+		
+	{% else -%}
+		No articles found.
+	{% endif -%}
+</div>

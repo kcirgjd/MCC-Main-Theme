@@ -1,0 +1,118 @@
+
+
+
+<style>
+ul.nav li.dropdown:hover div.dropdown-menu{ 
+    display: block; 
+    }
+
+
+                            
+    .dropdown-menu.multi-column {
+    
+
+}
+
+.dropdown-menu.multi-column .dropdown-menu {
+    display: block !important;
+    position: static !important;
+    border: none !important;
+    box-shadow: none !important;
+
+}
+
+    
+             
+
+</style>
+
+<div class="hidden-xs hidden-sm">
+
+<div class="collapse navbar-collapse">
+	{% if Page.DisplayChildPages == 'true' and Page.Pages != empty %}
+		<ul class="nav navbar-nav">
+			{% for childPage in Page.Pages %}
+				{% if childPage.Current == 'true' %}
+					<li class="active dropdown">
+				{% else grandchildPage.Pages != empty%}
+					<li class="dropdown">
+				{% endif %}
+					<a  href="{{ childPage.Url }}"  >{{ childPage.Title | Upcase }}</a>
+						{% if childPage.DisplayChildPages == 'true' and childPage.Pages != empty %}
+							 <div class="dropdown-menu multi-column ">
+                                <div class="container-fluid" >
+                                        {% for grandchildPage in childPage.Pages %}                                                 
+                                            <div>
+                                            <ul class="dropdown-menu" >
+
+                                                     <li>
+                                                        <a role="menu-item" href="{{ grandchildPage.Url }}"><strong>{{ grandchildPage.Title}}</strong></a>
+                                                            {% if grandchildPage.DisplayChildPages == 'true' %}
+                                                                {% for greatgrandchildPage in grandchildPage.Pages %}
+                                                                    <li>
+                                                                        <a role="menu-item" href="{{ greatgrandchildPage.Url | Remove:'?Page=PageNum'}}">-{{ greatgrandchildPage.Title }}</a>
+                                                                    </li>
+                                                                {% endfor %}
+                                                            {% endif %}
+
+
+                                                    </li>
+
+                                            </UL>
+                                            <div>
+                                                {% endfor %}
+                                </div>
+
+                            
+                            
+
+						{% endif %}							
+					</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+</div>
+</div>
+
+<div class="visible-xs visible-sm hidden-md hidden-lg">
+<div class="collapse navbar-collapse">
+	{% if Page.DisplayChildPages == 'true' and Page.Pages != empty %}
+		<ul class="nav navbar-nav">
+			{% for childPage in Page.Pages %}
+				{% if childPage.Current == 'true' %}
+					<li class="active dropdown">
+				{% else grandchildPage.Pages != empty%}
+					<li class="dropdown">
+
+				{% endif %}
+						{% if childPage.DisplayChildPages == 'true' and childPage.Pages != empty %}
+
+                            <a  href="{{ childPage.Url }}" data-toggle="dropdown"  >{{ childPage.Title | Upcase }}</a>
+                                        {% for grandchildPage in childPage.Pages %}                                                 
+                                            <ul class="dropdown-menu" >
+                                                     <li>
+                                                        <a role="menu-item" href="{{ grandchildPage.Url }}"><strong>{{ grandchildPage.Title}}</strong></a>
+                                                            {% if grandchildPage.DisplayChildPages == 'true' %}
+                                                                {% for greatgrandchildPage in grandchildPage.Pages %}
+                                                                    <li>
+                                                                        <a role="menu-item" href="{{ greatgrandchildPage.Url | Remove:'?Page=PageNum'}}">-{{ greatgrandchildPage.Title }}</a>
+                                                                    </li>
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                    </li>
+                                            </UL>
+                                        {% endfor %}
+                    	{% else %}
+                            <a  href="{{ childPage.Url }}" >{{ childPage.Title | Upcase }}</a>
+
+                                        
+
+     
+						{% endif %}							
+					</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+</div>
+</div>
+

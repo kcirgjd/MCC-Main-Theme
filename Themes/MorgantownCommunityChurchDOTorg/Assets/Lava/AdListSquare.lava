@@ -2,7 +2,7 @@
   {% for item in Items limit:1 -%}
 <div class="col-md-6">
       <a href="{{ LinkedPages.DetailPage }}?Item={{ item.Id }}">
-       <img class="img-responsive" {{ item.Image | remove:'<img' }}</a>
+       <img class="img-thumbnail" {{ item.Image | remove:'<img' }}</a>
     </div>
   {% endfor -%}
 

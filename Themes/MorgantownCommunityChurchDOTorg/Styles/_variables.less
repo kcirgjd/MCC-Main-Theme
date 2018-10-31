@@ -1,5 +1,5 @@
 
-// Theme Colors *open*
+// Theme Colors *show in editor*
 @theme-1: #1e6e32;  // Darker Green
 @theme-1-text: #fff;
 //--
@@ -39,7 +39,7 @@
 @theme-13: #e6dcc3;
 @theme-13-text: #fff;
 
-// Text *open*
+// Text *show in editor*
 @text-color:             #323232; // The default text color. #color
 @link-color:             @theme-4; // The color for all links.
 @link-hover-color:       lighten(@link-color, 15%); // The rollover color for all links.
@@ -47,7 +47,7 @@
 @text-selection-bg:      #afd074; // Text selection background color (used when people select text with the mouse).
 @text-selection-color:   #fff;    // Text selection text color (used when people select text with the mouse).
 @font-family-sans-serif: 'OpenSans', 'Helvetica Neue', Helvetica, Arial, sans-serif; // The base font to use for text. Be sure when defining this font that the various weights are configured.
-@headings-font-family:    "Catamaran", sans-serif; // Font used for headings.
+@headings-font-family:    "Montserrat", sans-serif; // Font used for headings.
 @font-size-base:          16px; // The default text size.
 @line-height-base:        1.428571429; // The default line height.
 
@@ -62,9 +62,9 @@
 // Bootstrap Colors
 
 //// Bootstrap Colors {The primary colors defined by the Bootstrap framework. [More Information](http://getbootstrap.com/customize/#colors)}
-@brand-primary:         @theme-2;
+@brand-primary:         @theme-4;
 @brand-success:         #18BC9C;
-@brand-info:            #3498DB;
+@brand-info:            #5a9628;
 @brand-warning:         #F39C12;
 @brand-danger:          #E74C3C;
 //--
@@ -96,12 +96,13 @@
 
 
 //// Page Title
-@pagetitle-bg: @theme-3;          // The background color of the page title section.
-@pagetitle-text-color: @theme-3-text;  // The text color of the page title section.
+@pagetitle-bg: @theme-4;          // The background color of the page title section.
+@pagetitle-text-color: @theme-4-text;  // The text color of the page title section.
+
 
 //// Breadcrumbs
-@breadcrumb-bg:               @theme-3;
-@breadcrumb-color:            lighten(@theme-3-text, 30%);
+@breadcrumb-bg:               @theme-4;
+@breadcrumb-color:            lighten(@theme-4-text, 30%);
 @breadcrumb-active-color:     @breadcrumb-color;
 @breadcrumb-separator:        "/";
 
@@ -167,7 +168,7 @@
 //--
 @panel-heading-bg:            @theme-3;                  // The background color of the panel's header.
 @panel-heading-text-color:    @theme-3-text;              // The heading's text color.
-@panel-heading-border:        darken(@panel-heading-bg, 30%); // The headings border color.
+@panel-heading-border:        darken(@panel-heading-bg, 40%); // The headings border color.
 //--
 @panel-following-active-bg:   @panel-top-border-color;   // The background color of the following square when it's active at the top of panels that support the following feature (e.g. Group Details block).
 //--
@@ -287,12 +288,12 @@
 @listasblocks-bg: @theme-3;
 @listasblocks-border-color: darken(@theme-3, 10%);
 @listasblocks-color: @theme-3-text;
-@listasblocks-rollover-bg: @theme-2;
-@listasblocks-rollover-text-color: @theme-2-text;
+@listasblocks-rollover-bg: @theme-4;
+@listasblocks-rollover-text-color: @theme-4-text;
 @listasblocks-rollover-border-color: darken(@listasblocks-rollover-bg, 5%);
-@listasblocks-active-bg: @theme-2;
+@listasblocks-active-bg: @theme-4;
 @listasblocks-active-border-color: darken(@listasblocks-active-bg, 10%);
-@listasblocks-active-color: @theme-2-text;
+@listasblocks-active-color: @theme-4-text;
 
 // Tags { Styles for the tag control used on the person profile. }
 @tag-bg: #c2b8a7;
@@ -334,8 +335,8 @@
 @wizard-item-icon-bg: lighten(@wizard-item-icon-active-bg, 25%);
 
 // Tree Viewer
-@tree-rollover-bg: lighten(@theme-2, 20%);         // Background color of the rollover for items in the treeview.
-@tree-rollover-color: @theme-2-text;      // Text color of the rollover for items in the treeview.
+@tree-rollover-bg: lighten(@theme-4, 20%);         // Background color of the rollover for items in the treeview.
+@tree-rollover-color: @theme-4-text;      // Text color of the rollover for items in the treeview.
 @tree-selected-bg: #6a6a6a;         // Background color of selected items in the treeview.
 @tree-selected-color: #ffffff;      // Text color of selected items in the treeview.
 
@@ -451,17 +452,9 @@
 //** Number of columns in the grid.
 @grid-columns:              12;
 //** Padding between columns. Gets divided in half for the left and right.
-@grid-gutter-width:         20px;
+@grid-gutter-width:         30px;
 // Navbar collapse
 //** Point at which the navbar becomes uncollapsed.
 @grid-float-breakpoint:     @screen-md-min;
 //** Point at which the navbar begins collapsing.
 @grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
-
-// NO Gutter on items
-.no-gutter > [class*='col-'] {
-    padding-right:0;
-    padding-left:0;
-    padding-top:0;
-    Padding-bottom:0;
-}

@@ -1,0 +1,107 @@
+       <script>$( document ).ready(function() {
+    var heights = $(".col-md-3").map(function() {
+        return $(this).height();
+    }).get(),
+
+    maxHeight = Math.max.apply(null, heights);
+
+    $(".col-md-3").height(maxHeight);
+});</script>
+
+<style>
+			.parallax-ad { 
+    /* The image used */
+				background-color: #828282;
+ 				background-image: url("/");
+
+   			 /* Set a specific height */
+			    height: 100%; 
+	
+		    /* Create the parallax scrolling effect */
+			    background-attachment: fixed;
+			    background-position: center;
+			    background-repeat: no-repeat;
+			    background-size: cover;
+				Padding: 1% 6%;
+}
+			.extra-padding {
+				padding: 10px;
+				margin:1px, 5px 10px, 5px;
+}
+
+
+.img-hover img {
+    -webkit-transition: all .3s ease; /* Safari and Chrome */
+  	-moz-transition: all .3s ease; /* Firefox */
+  	-o-transition: all .3s ease; /* IE 9 */
+  	-ms-transition: all .3s ease; /* Opera */
+  	transition: all .3s ease;
+}
+.img-hover img:hover {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform:translateZ(0) scale(1.05); /* Safari and Chrome */
+    -moz-transform:scale(1.05); /* Firefox */
+    -ms-transform:scale(1.05); /* IE 9 */
+    -o-transform:translatZ(0) scale(1.05); /* Opera */
+    transform:translatZ(0) scale(1.05);
+}
+  
+  
+.grayscale {
+  -webkit-filter: brightness(1.10) grayscale(100%) contrast(90%);
+  -moz-filter: brightness(1.10) grayscale(100%) contrast(90%);
+  filter: brightness(1.10) grayscale(100%); 
+}
+			
+		</style>
+
+<div class="parallax-ad row no-gutter" >
+{% for item in Items %}
+<article class="col-md-3 extra-padding" >
+   <div class="panel " style="height:100%;">
+     <div>
+         
+          <div>
+            {% if item.Image == empty %}
+              <div class="embed-responsive embed-responsive-4by3">
+                  {{ item.Video }}
+              </div>
+          {% endif %}
+          </div> 
+        <div> 
+<div>
+  
+             <a href="{{ LinkedPages.DetailPage }}?Item={{ item.Id }}" >
+
+    <div class="col-md-12 img-hover">
+<img  class="img-thumbnail" {{ item.Image | remove:'<img' }}
+</div>
+
+
+        </div>
+     </div>
+      <h4>{{ item.Title }}</h4></a>
+             {% if item.Time != empty %}
+            <h5>Event Date: {{ item.Time || Date:'M/d/yyyy h:mm tt' }}</h5>
+             {% endif %}
+    <div>
+{% if item.Time contains '0' %}
+{{ item.SummaryText | Truncate:60,'...' }}
+{% else %}
+{{ item.SummaryText | Truncate:115,'...' }}
+{% endif %}      
+    </div>
+
+  <p class="margin-t-lg">
+    <a href="{{ LinkedPages.DetailPage }}?Item={{ item.Id }}" class="btn btn-default btn-xs">
+      Read more <i class="fa fa-chevron-right"></i>
+    </a>
+  </p>
+    <div>
+
+    </div>
+</article>
+{% endfor %}
+</div>
+

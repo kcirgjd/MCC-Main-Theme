@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" Inherits="Rock.Web.UI.RockPage" %>
+<%@ Page Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" Inherits="Rock.Web.UI.RockPage" %>
 
 <asp:Content ID="ctMain" ContentPlaceHolderID="main" runat="server">
     
@@ -6,6 +6,9 @@
         
         <!-- Start Content Area -->
   
+      
+
+
          <!-- Ajax Error -->
         <div class="alert alert-danger ajax-error" style="display:none">
             <p><strong>Error</strong></p>
@@ -17,10 +20,16 @@
                 <Rock:Zone Name="Feature" runat="server" />
             </div>
         </div>
-      
-        <!-- Page Title -->
-        <Rock:PageIcon ID="PageIcon" runat="server" /> <h1><Rock:PageTitle ID="PageTitle" runat="server" /></h1>
-        
+
+           <!-- Page Title -->
+        <Rock:PageIcon ID="PageIcon" runat="server" /> 
+<Div >
+    <div>
+	<h1 class="Page-Title-Text"><Rock:PageTitle ID="PageTitle" runat="server" /></h1>
+    </div>
+</div>
+
+     
         <!-- Breadcrumbs -->    
         <Rock:PageBreadCrumbs ID="PageBreadCrumbs" runat="server" />
 
